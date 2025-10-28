@@ -1,0 +1,17 @@
+version: 2
+
+sources:
+  - name: silverscreen
+    database: silverscreen
+    schema: public
+    tables:
+      - name: movie_catalogue
+        description: "raw data for movie catalogue, table contains detailed information about movies released in 2024 and rented out"
+      - name: invoices
+        description: "raw data for invoices, issued for showing a specific movie at various theater locations during different months"
+      - name: nj_001
+        description: "raw data about ticket sales, information on all transactions from location number one"
+      - name: nj_002
+        description: "raw data about ticket sales, daily sales information from location number two"
+      - name: nj_003
+        description: "raw data about ticket sales, tracks individual purchases from location number three, covering various product types such as tickets, snacks, and drinks"
