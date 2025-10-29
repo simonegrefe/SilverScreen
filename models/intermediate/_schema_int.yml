@@ -8,7 +8,7 @@ models:
     columns:
       - name: movie_id
         data_type: varchar
-        description: "unique identifier for each movie, typically consisting of the studio, year, and a unique movie code"
+        description: "unique identifier for each movie"
         data_tests:
           - not_null
           - relationships:
