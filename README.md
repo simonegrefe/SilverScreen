@@ -74,7 +74,7 @@ Besides generic tests `not_null`, `unique` and `relationships` three singular te
 
 ---
 
-## Usage
+## **Usage**
 
 The project helps to understand the **financial performance** for each movie across all locations per month to:
 
@@ -85,7 +85,7 @@ The project helps to understand the **financial performance** for each movie acr
 
 ---
 
-## Tools
+## **Tools**
 
 This project leverages the following technologies:
 
