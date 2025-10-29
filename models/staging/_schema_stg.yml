@@ -1,0 +1,158 @@
+version: 2
+
+models:
+  - name: stg_invoices
+    description: "cleaned and standardized data, representing the invoices issued for showing a specific movie at various theater locations during different months"
+    columns:
+      - name: movie_id
+        data_type: varchar
+        description: "unique identifier for each movie"
+        data_tests:
+          - not_null
+
+      - name: month
+        data_type: date
+        description: "month in which the invoice was issued"
+        data_tests:
+          - not_null
+
+      - name: location_id
+        data_type: varchar
+        description: "identifier of the movie theater location, which is where the movie was shown"
+        data_tests:
+          - not_null
+
+      - name: studio
+        data_type: varchar
+        description: "production studio responsible for the movie, such as Pixar, Marvel Studios, etc"
+        data_tests:
+          - not_null
+
+      - name: rental_cost
+        data_type: number
+        description: "weekly price charged for showing the movie at the specific location, aggregated using MIN due to synthetic data anomalies"
+        data_tests:
+          - not_null
+
+  - name: stg_movie_catalogue
+    description: "table contains cleaned and standardized data with detailed information about movies released in 2024 and rented out"
+    columns:
+      - name: movie_id
+        data_type: varchar
+        description: "Unique identifier for each movie"
+        data_tests:
+          - not_null
+          - unique
+
+      - name: movie_title
+        data_type: varchar
+        description: "title of the movie"
+        data_tests:
+          - not_null
+
+      - name: genre
+        data_type: varchar
+        description: "genre of the movie, describing the type of content, missing information transformed into 'Unknown'"
+
+      - name: studio
+        data_type: varchar
+        description: "production studio responsible for making the movie"
+
+  - name: stg_nj_001
+    description: "cleaned and standardized data with information on all transactions from location 1 including monthly aggregated tickets sold and revenue"
+    columns:
+      - name: month
+        data_type: date
+        description: "date and time the transaction occurred, truncated to the first day of the month"
+        data_tests:
+          - not_null
+
+      - name: movie_id
+        data_type: varchar
+        description: "unique identifier for the movie"
+        data_tests:
+          - not_null
+
+      - name: location_id
+        data_type: varchar
+        description: "created identifier for location 1"
+        data_tests:
+          - not_null
+
+      - name: tickets_sold
+        data_type: number
+        description: "total number of tickets sold for each movie in that month"
+        data_tests:
+          - not_null
+
+      - name: revenue
+        data_type: number
+        description: "total amount of money spent in the transaction, calculated as ticket_amount * price"
+        data_tests:
+          - not_null
+
+  - name: stg_nj_002
+    description: "daily sales information from location 2 including monthly aggregated tickets sold and revenue"
+    columns:
+      - name: month
+        data_type: date
+        description: "date the transaction occurred, truncated to the first day of the month"
+        data_tests:
+          - not_null
+
+      - name: movie_id
+        data_type: varchar
+        description: "unique identifier for the movie"
+        data_tests:
+          - not_null
+
+      - name: location_id
+        data_type: varchar
+        description: "created identifier for location 2"
+        data_tests:
+          - not_null
+
+      - name: tickets_sold
+        data_type: number
+        description: "total number of tickets sold for each movie in that month"
+        data_tests:
+          - not_null
+
+      - name: revenue
+        data_type: number
+        description: "total revenue earned from ticket sales on the specified date, calculated as ticket_amount * ticket_price."
+        data_tests:
+          - not_null
+
+  - name: stg_nj_003
+    description: "tracks individual purchases from location 3, covering various product types , why we included the filter for tickets including monthly aggregated tickets sold and revenue"
+    columns:
+      - name: month
+        data_type: date
+        description: "date and time the transaction occurred, truncated to the first day of the month"
+        data_tests:
+          - not_null
+
+      - name: movie_id
+        data_type: varchar
+        description: "renamed details to movie_id as unique identifier for the movie in preparation to unify all locations"
+        data_tests:
+          - not_null
+
+      - name: location_id
+        data_type: varchar
+        description: "created identifier for location 3"
+        data_tests:
+          - not_null
+
+      - name: tickets_sold
+        data_type: number
+        description: "total number of tickets sold for each movie in that month"
+        data_tests:
+          - not_null
+
+      - name: revenue
+        data_type: number
+        description: "total amount spent in the transaction, calculated as amount * price"
+        data_tests:
+          - not_null
