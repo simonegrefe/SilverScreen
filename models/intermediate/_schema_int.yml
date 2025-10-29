@@ -2,9 +2,9 @@ version: 2
 
 models:
   - name: int_movies
-    description: "join tables of represent the invoices issued for showing a specific movie 
+    description: "join data representing the invoices issued for renting a specific movie 
                   at various theater locations during different months and detailed information about 
-                  movies released in 2024 and rented out"
+                  the movies"
     columns:
       - name: movie_id
         data_type: varchar
@@ -46,7 +46,7 @@ models:
           - not_null
 
   - name: int_nj_monthly_rev
-    description: "union of tables on monthly revenue of all three locations "
+    description: "unified tables on monthly revenue of all three locations "
     columns:
       - name: month
         data_type: date

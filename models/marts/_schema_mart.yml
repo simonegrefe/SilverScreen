@@ -2,11 +2,11 @@ version: 2
 
 models:
   - name: mart_monthly_performance
-    description: "Join based on movie details showing monthly perfomance of all locations"
+    description: "final table providing a comprehensive view of monthly movie performance"
     columns:
       - name: movie_id
         data_type: varchar
-        description: "unique identifier for each movie, typically consisting of the studio, year, and a unique movie code"
+        description: "unique identifier for each movie"
         data_tests:
           - not_null
           - relationships:
@@ -23,11 +23,11 @@ models:
 
       - name: studio
         data_type: varchar
-        description: "production studio responsible for the movie, such as Pixar, Marvel Studios, etc"
+        description: "production studio responsible for the movie"
 
       - name: month
         data_type: date
-        description: "month the sales and transactions occurred"
+        description: "month relating to cost, revenue and gross margin"
         data_tests:
           - not_null
 
@@ -43,7 +43,6 @@ models:
         data_tests:
           - not_null
   
-
       - name: rental_cost
         data_type: number
         description: "weekly price charged for showing the movie at the specific location"
