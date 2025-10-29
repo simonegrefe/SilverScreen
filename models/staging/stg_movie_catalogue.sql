@@ -1,4 +1,4 @@
-{{ config(materialized="table") }}
+{{ config(materialized="view") }}
 
 with import_movie_catalogue as (
     select * from {{ source('silverscreen', 'movie_catalogue') }}

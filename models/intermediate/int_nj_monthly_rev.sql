@@ -7,7 +7,9 @@ select
     tickets_sold,
     revenue
 from {{ ref('stg_nj_001') }}
+
 UNION
+
 select    
     month,
     movie_id,
@@ -15,7 +17,9 @@ select
     tickets_sold,
     revenue
 from {{ ref('stg_nj_002') }}
+
 UNION
+
 select    
     month,
     movie_id,

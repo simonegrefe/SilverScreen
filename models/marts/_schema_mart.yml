@@ -1,0 +1,63 @@
+version: 2
+
+models:
+  - name: mart_monthly_performance
+    description: "Join based on movie details showing monthly perfomance of all locations"
+    columns:
+      - name: movie_id
+        data_type: varchar
+        description: "unique identifier for each movie, typically consisting of the studio, year, and a unique movie code"
+        data_tests:
+          - not_null
+          - relationships:
+              field: movie_id
+              to: ref('int_movies')
+
+      - name: movie_title
+        data_type: varchar
+        description: "title of each movie"
+
+      - name: genre
+        data_type: varchar
+        description: "genre"
+
+      - name: studio
+        data_type: varchar
+        description: "production studio responsible for the movie, such as Pixar, Marvel Studios, etc"
+
+      - name: month
+        data_type: date
+        description: "month the sales and transactions occurred"
+        data_tests:
+          - not_null
+
+      - name: location
+        data_type: varchar
+        description: "identifier of the movie theater location, which is where the movie was shown"
+        data_tests:
+          - not_null
+
+      - name: tickets_sold
+        data_type: number
+        description: "total number of tickets purchased in this particular transaction"
+        data_tests:
+          - not_null
+  
+
+      - name: rental_cost
+        data_type: number
+        description: "weekly price charged for showing the movie at the specific location"
+        data_tests:
+          - not_null
+
+      - name: revenue
+        data_type: number
+        description: "total revenue earned from ticket sales on the specified date"
+        data_tests:
+          - not_null
+
+      - name: gross_margin
+        data_type: number
+        description: "gross margin from ticket sales calculated as revenue / rental costs"
+        data_tests:
+          - not_null

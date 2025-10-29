@@ -1,4 +1,4 @@
-{{config(materialized='table')}}
+{{config(materialized='view')}}
 
 with import_nj_001 as (
     select * from {{ source('silverscreen', 'nj_001') }}

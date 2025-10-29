@@ -1,4 +1,4 @@
-{{config(materialized='table')}}
+{{config(materialized='view')}}
 
 with
 import_invoices as (

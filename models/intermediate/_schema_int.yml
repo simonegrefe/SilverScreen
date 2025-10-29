@@ -1,0 +1,82 @@
+version: 2
+
+models:
+  - name: int_movies
+    description: "join tables of represent the invoices issued for showing a specific movie 
+                  at various theater locations during different months and detailed information about 
+                  movies released in 2024 and rented out"
+    columns:
+      - name: movie_id
+        data_type: varchar
+        description: "unique identifier for each movie, typically consisting of the studio, year, and a unique movie code"
+        data_tests:
+          - not_null
+          - relationships:
+              field: movie_id
+              to: ref('stg_movie_catalogue')
+
+      - name: month
+        data_type: date
+        description: "month the transaction occurred"
+        data_tests:
+          - not_null
+
+      - name: location_id
+        data_type: varchar
+        description: "identifier of the movie theater location, which is where the movie was shown"
+        data_tests:
+          - not_null
+
+      - name: studio
+        data_type: varchar
+        description: "production studio responsible for the movie, such as Pixar, Marvel Studios, etc"
+
+      - name: movie_title
+        data_type: varchar
+        description: "movie title"
+
+      - name: genre
+        data_type: varchar
+        description: "genre"
+
+      - name: rental_cost
+        data_type: number
+        description: "weekly price charged for showing the movie at the specific location"
+        data_tests:
+          - not_null
+
+  - name: int_nj_monthly_rev
+    description: "union of tables on monthly revenue of all three locations "
+    columns:
+      - name: month
+        data_type: date
+        description: "month the sales occurred"
+        data_tests:
+          - not_null
+
+      - name: movie_id
+        data_type: varchar
+        description: "unique identifier for each movie, typically consisting of the studio, year, and a unique movie code"
+        data_tests:
+          - not_null
+          - relationships:
+              field: movie_id
+              to: ref('stg_nj_002')
+
+      - name: location_id
+        data_type: varchar
+        description: "identifier of the movie theater location, which is where the movie was shown"
+        data_tests:
+          - not_null
+
+      - name: tickets_sold
+        data_type: number
+        description: "total number of tickets purchased in this particular transaction"
+        data_tests:
+          - not_null
+
+      - name: revenue
+        data_type: number
+        description: "total revenue earned from ticket sales on the specified date"
+        data_tests:
+          - not_null
