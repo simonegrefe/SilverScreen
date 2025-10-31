@@ -60,7 +60,7 @@ Joined `stg_invoices` with `stg_movie_catalogue` to enrich each record with movi
 
 ### 6. **Merge rental costs and calculate metrics**
 
-In the final mart model (`mart_monthly_performance`), integrated monthly rental cost data with revenue and ticket sales, and calculated `gross_margin` as `revenue / rental_cost`.
+In the final mart model (`mart_monthly_performance`), integrated monthly rental cost data with revenue and ticket sales, and calculated `gross_margin`.
 
 ---
 
