@@ -35,7 +35,7 @@ select
     nj.tickets_sold,
     mo.rental_cost,
     nj.revenue,
-    round(nj.revenue / mo.rental_cost,2) as gross_margin
+    round( (nj.revenue - mo.rental_cost) / NULLIF(nj.revenue, 0), 2 ) AS gross_margin
 from import_movies as mo
 left join import_nj_monthly_revenue nj 
 on mo.movie_id = nj.movie_id and mo.location_id = nj.location_id and mo.month = nj.month
